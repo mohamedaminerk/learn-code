@@ -118,7 +118,7 @@ function renderWork(container) {
    isolated to this one function.
    ========================================================== */
 const PISTON_BASE = "https://emkc.org/api/v2/piston";
-const PISTON_LANG = { c: "c", java: "java", python: "python3" };
+const PISTON_LANG = { c: "c", java: "java", python: "python3", linux: "bash" };
 let _runtimesCache = null;
 
 async function getRuntimeVersion(lang) {
@@ -136,6 +136,7 @@ async function getRuntimeVersion(lang) {
 function mainFileName(lang) {
   if (lang === "c") return "main.c";
   if (lang === "java") return "Main.java";
+  if (lang === "linux") return "main.sh";
   return "main.py";
 }
 

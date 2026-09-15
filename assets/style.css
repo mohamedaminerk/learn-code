@@ -66,9 +66,10 @@ header.site{
 .logo{
   font-family:var(--font-mono); font-weight:600; font-size:1.05rem;
   letter-spacing:0.02em; color:var(--paper); text-decoration:none;
-  display:flex; align-items:baseline; gap:2px;
+  display:flex; align-items:center; gap:9px;
 }
 .logo .dot{ color:var(--amber); }
+.logo-mark{ width:24px; height:24px; border-radius:6px; flex:none; display:block; }
 nav.links{ display:flex; gap:28px; }
 nav.links a{
   text-decoration:none; font-size:0.94rem; color:var(--sky);

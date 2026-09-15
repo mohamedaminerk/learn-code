@@ -285,7 +285,7 @@ footer .logo{ font-size:0.9rem; }
 }
 @keyframes spin{ to{ transform:rotate(360deg); } }
 /* =========================
-   MY JOURNEY
+   MY JOURNEY (Blueprint Theme)
    ========================= */
 
 .journey-certificates {
@@ -295,17 +295,19 @@ footer .logo{ font-size:0.9rem; }
 }
 
 .journey-certificate {
-  border: 1px solid #d9d9d9;
-  background: #fff;
+  border: 1px solid var(--grid-line-strong);
+  background: var(--blue-panel);
+  border-radius: var(--radius-card);
   overflow: hidden;
+  color: var(--paper);
 }
 
 .certificate-document {
   width: 100%;
   height: 330px;
-  background: #f3f3f0;
+  background: var(--blue-deep);
   overflow: hidden;
-  border-bottom: 1px solid #d9d9d9;
+  border-bottom: 1px solid var(--grid-line-strong);
 }
 
 .certificate-document iframe {
@@ -321,11 +323,13 @@ footer .logo{ font-size:0.9rem; }
 
 .certificate-content h3 {
   margin: 8px 0 10px;
+  color: #ffffff;
 }
 
 .certificate-content p {
   margin-bottom: 20px;
   line-height: 1.6;
+  color: #a9b8c6;
 }
 
 
@@ -336,8 +340,10 @@ footer .logo{ font-size:0.9rem; }
   align-items: center;
   gap: 40px;
   padding: 36px;
-  border: 1px solid #d9d9d9;
-  background: #fff;
+  border: 1px solid var(--grid-line-strong);
+  background: var(--blue-panel);
+  border-radius: var(--radius-card);
+  color: var(--paper);
 }
 
 .education-logo {
@@ -347,6 +353,9 @@ footer .logo{ font-size:0.9rem; }
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(18, 34, 56, 0.6);
+  border-radius: 4px;
+  border: 1px solid var(--grid-line);
 }
 
 .education-logo img {
@@ -362,11 +371,17 @@ footer .logo{ font-size:0.9rem; }
 
 .education-content h3 {
   margin: 8px 0;
+  color: #ffffff;
+}
+
+.education-content p {
+  color: #a9b8c6;
 }
 
 .education-field {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   margin-bottom: 16px;
+  color: var(--sky);
 }
 
 
@@ -380,12 +395,15 @@ footer .logo{ font-size:0.9rem; }
 
 .journey-skill-card {
   padding: 28px;
-  border: 1px solid #d9d9d9;
-  background: #fff;
+  border: 1px solid var(--grid-line-strong);
+  background: var(--blue-panel);
+  border-radius: var(--radius-card);
+  color: var(--paper);
 }
 
 .journey-skill-card h3 {
   margin: 10px 0 20px;
+  color: #ffffff;
 }
 
 .skill-list {
@@ -395,10 +413,13 @@ footer .logo{ font-size:0.9rem; }
 }
 
 .skill-list span {
-  padding: 7px 10px;
-  border: 1px solid #d9d9d9;
-  font-family: "IBM Plex Mono", monospace;
+  padding: 6px 10px;
+  border: 1px solid var(--grid-line-strong);
+  background: rgba(56, 189, 248, 0.05);
+  font-family: var(--font-mono);
   font-size: 12px;
+  color: var(--sky);
+  border-radius: 3px;
 }
 
 
@@ -415,66 +436,61 @@ footer .logo{ font-size:0.9rem; }
   grid-template-columns: 90px 1fr;
   gap: 30px;
   padding: 30px;
-  border: 1px solid #d9d9d9;
-  background: #fff;
+  border: 1px solid var(--grid-line-strong);
+  background: var(--blue-panel);
+  border-radius: var(--radius-card);
+  color: var(--paper);
 }
 
 .journey-project-number {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 14px;
+  color: var(--amber);
 }
 
 .journey-project-content h3 {
   margin: 8px 0 12px;
+  color: #ffffff;
 }
 
 .journey-project-content p {
   max-width: 850px;
   line-height: 1.7;
   margin-bottom: 18px;
+  color: #a9b8c6;
 }
 
 
 /* MOBILE */
 
 @media (max-width: 900px) {
-
   .journey-certificates {
     grid-template-columns: 1fr;
   }
-
   .journey-skills {
     grid-template-columns: 1fr;
   }
-
   .journey-education {
     flex-direction: column;
     align-items: flex-start;
   }
-
   .education-logo {
     width: 100%;
     height: 170px;
   }
-
   .journey-project {
     grid-template-columns: 1fr;
   }
-
 }
 
 @media (max-width: 600px) {
-
   .certificate-document {
     height: 400px;
   }
-
   .journey-education {
     padding: 24px;
   }
-
   .journey-project {
     padding: 24px;
   }
-
 }

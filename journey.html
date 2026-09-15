@@ -5,14 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>My Journey — learn.code</title>
-<meta name="description" content="My education, skills, certificates and projects.">
+
+<meta name="description" content="My education, technical skills, certificates, projects and professional experience.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="My Journey — learn.code">
+<meta property="og:description" content="Explore my education, skills, certificates, projects and professional experience.">
+
+<meta name="robots" content="index, follow">
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="assets/favicon.ico">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -29,7 +36,11 @@
       learn<span class="dot">.</span>code
     </a>
 
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">
+    <button
+      class="nav-toggle"
+      id="navToggle"
+      aria-expanded="false"
+      aria-controls="navLinks">
       menu
     </button>
 
@@ -37,8 +48,8 @@
       <a href="index.html" data-nav="home">Home</a>
       <a href="language.html?lang=c" data-nav="languages">Languages</a>
       <a href="courses.html" data-nav="courses">Courses</a>
-      <a href="work.html" data-nav="work">My work</a>
       <a href="journey.html" data-nav="journey">My Journey</a>
+      <a href="work.html" data-nav="work">My work</a>
       <a href="about.html" data-nav="about">About</a>
     </nav>
 
@@ -58,248 +69,335 @@
         <span class="current">My Journey</span>
       </div>
 
-      <h1 class="page-title">My Journey</h1>
+      <p class="page-tag">education · skills · certificates · projects</p>
 
-      <p>
-        My education, skills, certificates and projects.
+      <h1 class="page-title">
+        My Journey
+      </h1>
+
+      <p class="page-sub">
+        A look at my academic path, technical skills, certifications,
+        projects and first professional experience in software development.
       </p>
 
     </div>
   </section>
 
 
+  <!-- EDUCATION -->
   <section>
     <div class="wrap">
 
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Education</h2>
+          <p class="section-desc">
+            My current academic path in computer science.
+          </p>
+        </div>
 
-      <!-- EDUCATION -->
-      <div class="journey-section">
+        <span class="section-index">01 / education</span>
+      </div>
 
-        <p class="journey-section-title">
-          01 — Education
-        </p>
 
-        <div class="journey-card">
+      <div class="journey-education">
 
-          <div>
-            <p class="journey-title">
-              Institut Supérieur d'Informatique — ISI
-            </p>
+        <div class="education-logo">
+          <img
+            src="assets/images/isi-logo.png"
+            alt="Institut Supérieur d’Informatique logo">
+        </div>
 
-            <p class="journey-subtitle">
-              Computer Science
-            </p>
+        <div class="education-content">
 
-            <p class="journey-meta">
-              2nd Year
-            </p>
-          </div>
+          <span class="course-lang">2025 — PRESENT</span>
 
-          <p class="journey-description">
-            Studying computer science with a focus on programming,
-            algorithms, data structures and software development.
+          <h3>Institut Supérieur d’Informatique — ISI</h3>
+
+          <p class="education-field">
+            Computer Science
+          </p>
+
+          <p>
+            Currently in my <strong>2nd year</strong> of computer science studies,
+            developing my foundations in programming, algorithms, data structures,
+            operating systems, networks and software development.
           </p>
 
         </div>
 
       </div>
 
+    </div>
+  </section>
 
-      <!-- SKILLS -->
-      <div class="journey-section">
 
-        <p class="journey-section-title">
-          02 — Technical Skills
-        </p>
+  <!-- TECHNICAL SKILLS -->
+  <section>
+    <div class="wrap">
 
-        <div class="skill-grid">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Technical Skills</h2>
+          <p class="section-desc">
+            Technologies and tools I have learned and used in my projects.
+          </p>
+        </div>
 
-          <div class="skill-card">
+        <span class="section-index">02 / skills</span>
+      </div>
+
+
+      <div class="journey-skills">
+
+        <div class="journey-skill-card">
+          <span class="course-lang">PROGRAMMING</span>
+
+          <h3>Languages</h3>
+
+          <div class="skill-list">
             <span>C</span>
-          </div>
-
-          <div class="skill-card">
             <span>Python</span>
-          </div>
-
-          <div class="skill-card">
             <span>Java</span>
-          </div>
-
-          <div class="skill-card">
-            <span>HTML</span>
-          </div>
-
-          <div class="skill-card">
-            <span>CSS</span>
-          </div>
-
-          <div class="skill-card">
             <span>JavaScript</span>
           </div>
+        </div>
 
-          <div class="skill-card">
+
+        <div class="journey-skill-card">
+          <span class="course-lang">WEB</span>
+
+          <h3>Web Development</h3>
+
+          <div class="skill-list">
+            <span>HTML</span>
+            <span>CSS</span>
             <span>TypeScript</span>
-          </div>
-
-          <div class="skill-card">
             <span>Angular</span>
-          </div>
-
-          <div class="skill-card">
             <span>Spring Boot</span>
+            <span>REST API</span>
           </div>
+        </div>
 
-          <div class="skill-card">
+
+        <div class="journey-skill-card">
+          <span class="course-lang">TOOLS</span>
+
+          <h3>Tools & Technologies</h3>
+
+          <div class="skill-list">
             <span>MySQL</span>
-          </div>
-
-          <div class="skill-card">
             <span>Git</span>
-          </div>
-
-          <div class="skill-card">
             <span>GitHub</span>
+            <span>Swagger</span>
+            <span>IntelliJ IDEA</span>
           </div>
-
         </div>
 
       </div>
 
-
-      <!-- CERTIFICATES -->
-      <div class="journey-section">
-
-        <p class="journey-section-title">
-          03 — Certificates
-        </p>
-
-        <div class="certificate-grid">
+    </div>
+  </section>
 
 
-          <!-- CERTIFICATE 1 -->
-          <div class="certificate-card">
+  <!-- CERTIFICATES -->
+  <section>
+    <div class="wrap">
 
-            <img
-              src="assets/certificates/cs50.png"
-              alt="CS50 Certificate"
-              class="certificate-image"
-            >
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Certificates</h2>
+          <p class="section-desc">
+            Certifications and online learning achievements.
+          </p>
+        </div>
 
-            <div class="certificate-info">
+        <span class="section-index">03 / certificates</span>
+      </div>
 
-              <p class="certificate-title">
-                CS50x
-              </p>
 
-              <p class="certificate-platform">
-                Harvard University
-              </p>
+      <div class="journey-certificates">
 
-              <a
-                href="assets/certificates/cs50.png"
-                target="_blank"
-                class="btn btn-ghost btn-sm">
-                View Certificate
-              </a>
+        <!-- Certificate 1 -->
+        <article class="journey-certificate">
 
+          <div class="certificate-preview">
+            <span>PDF</span>
+          </div>
+
+          <div class="certificate-content">
+
+            <span class="course-lang">CISCO NETWORKING ACADEMY</span>
+
+            <h3>Python Essentials 1</h3>
+
+            <p>
+              Certificate covering the fundamentals of Python programming.
+            </p>
+
+            <a
+              href="assets/certificates/certificate-1.pdf"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-ghost">
+              View Certificate
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- Certificate 2 -->
+        <article class="journey-certificate">
+
+          <div class="certificate-preview">
+            <span>PDF</span>
+          </div>
+
+          <div class="certificate-content">
+
+            <span class="course-lang">HACKERRANK</span>
+
+            <h3>Python (Basic)</h3>
+
+            <p>
+              Certificate demonstrating basic Python programming skills.
+            </p>
+
+            <a
+              href="assets/certificates/certificate-2.pdf"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-ghost">
+              View Certificate
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- Certificate 3 -->
+        <article class="journey-certificate">
+
+          <div class="certificate-preview">
+            <span>PDF</span>
+          </div>
+
+          <div class="certificate-content">
+
+            <span class="course-lang">SAYLOR ACADEMY</span>
+
+            <h3>CS105: Introduction to Python</h3>
+
+            <p>
+              Certificate for completing an introductory Python programming course.
+            </p>
+
+            <a
+              href="assets/certificates/certificate-3.pdf"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-ghost">
+              View Certificate
+            </a>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- PROJECTS & EXPERIENCE -->
+  <section>
+    <div class="wrap">
+
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Projects & Experience</h2>
+          <p class="section-desc">
+            Practical work where I applied what I learned.
+          </p>
+        </div>
+
+        <span class="section-index">04 / experience</span>
+      </div>
+
+
+      <div class="journey-projects">
+
+        <!-- TaskFlow -->
+        <article class="journey-project">
+
+          <div class="journey-project-number">
+            01
+          </div>
+
+          <div class="journey-project-content">
+
+            <span class="course-lang">PERSONAL PROJECT</span>
+
+            <h3>TaskFlow — Todo List Web Application</h3>
+
+            <p>
+              A full-stack task management application developed to practice
+              backend and frontend web development.
+            </p>
+
+            <div class="skill-list">
+              <span>Java</span>
+              <span>Spring Boot</span>
+              <span>Angular</span>
+              <span>TypeScript</span>
+              <span>MySQL</span>
+              <span>REST API</span>
+              <span>JWT</span>
+              <span>Swagger</span>
             </div>
 
           </div>
 
+        </article>
 
-          <!-- CERTIFICATE 2 -->
-          <div class="certificate-card">
 
-            <img
-              src="assets/certificates/python.png"
-              alt="Python Certificate"
-              class="certificate-image"
-            >
+        <!-- ArabSoft -->
+        <article class="journey-project">
 
-            <div class="certificate-info">
+          <div class="journey-project-number">
+            02
+          </div>
 
-              <p class="certificate-title">
-                Python Certificate
-              </p>
+          <div class="journey-project-content">
 
-              <p class="certificate-platform">
-                Python Programming
-              </p>
+            <span class="course-lang">INTERNSHIP · JUNE 2026 — JULY 2026</span>
 
-              <a
-                href="assets/certificates/python.png"
-                target="_blank"
-                class="btn btn-ghost btn-sm">
-                View Certificate
-              </a>
+            <h3>ArabSoft — Web Development Internship</h3>
 
+            <p>
+              During my one-month internship at ArabSoft, I developed a web
+              application for task management. The project involved creating
+              a backend with Spring Boot, a frontend with Angular and a MySQL
+              database, while documenting and testing the REST API with Swagger.
+            </p>
+
+            <div class="skill-list">
+              <span>Spring Boot</span>
+              <span>Angular</span>
+              <span>MySQL</span>
+              <span>REST API</span>
+              <span>Swagger</span>
             </div>
 
           </div>
 
-
-        </div>
-
-      </div>
-
-
-      <!-- PROJECTS -->
-      <div class="journey-section">
-
-        <p class="journey-section-title">
-          04 — Projects & Experience
-        </p>
-
-
-        <div class="journey-card">
-
-          <p class="journey-title">
-            TaskFlow — Todo List Application
-          </p>
-
-          <p class="journey-description">
-            A full-stack task management web application
-            developed using Java Spring Boot, Angular and MySQL.
-          </p>
-
-          <div class="project-tags">
-
-            <span class="tag">Java</span>
-            <span class="tag">Spring Boot</span>
-            <span class="tag">Angular</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">REST API</span>
-
-          </div>
-
-        </div>
-
-
-        <div class="journey-card">
-
-          <p class="journey-title">
-            ArabSoft Internship
-          </p>
-
-          <p class="journey-description">
-            Web development internship focused on creating
-            a task management application.
-          </p>
-
-          <div class="project-tags">
-
-            <span class="tag">Spring Boot</span>
-            <span class="tag">Angular</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">Swagger</span>
-
-          </div>
-
-        </div>
+        </article>
 
       </div>
-
 
     </div>
   </section>
@@ -309,7 +407,6 @@
 
 <footer class="blueprint">
   <div class="wrap">
-
     <span class="logo">
       learn<span class="dot">.</span>code
     </span>
@@ -317,7 +414,6 @@
     <span>
       Built to learn from mistakes, one exercise at a time.
     </span>
-
   </div>
 </footer>
 

@@ -21,6 +21,12 @@ const LANGUAGES = {
     accent: "#5da97a",
     desc: "Fast to write, easy to misuse. Good first language, good place to build real habits.",
     cmMode: "text/x-python"
+  },
+  linux: {
+    name: "Linux",
+    accent: "#9b8cc9",
+    desc: "The shell, the filesystem, and the habits that make you fast instead of dangerous.",
+    cmMode: "text/x-sh"
   }
 };
 
@@ -390,6 +396,71 @@ print(data)
     data = f.read()
 print(data)`,
     explanation: "The file handle here is never explicitly closed — easy to forget, and it stays open if `read()` raises partway through. `with` guarantees the file closes either way. Output matches either way; this one's about safety, not correctness."
+  },
+
+  // ---------------- Linux / bash ----------------
+  {
+    id: "linux-loop-range",
+    lang: "linux",
+    title: "Off-by-one in a for loop",
+    difficulty: "beginner",
+    prompt: "Fix the loop so it prints 1 through 5 inclusive, not 1 through 4.",
+    starter:
+`#!/bin/bash
+for i in $(seq 1 4); do
+  # TODO: this stops one short — fix the range
+  echo "$i"
+done`,
+    expectedOutput: "1\n2\n3\n4\n5",
+    correction:
+`#!/bin/bash
+for i in $(seq 1 5); do
+  echo "$i"
+done`,
+    explanation: "`seq 1 4` only counts up to 4. The loop was meant to print 1 through 5 inclusive, so the upper bound needs to be 5."
+  },
+  {
+    id: "linux-string-compare",
+    lang: "linux",
+    title: "Comparing strings the wrong way",
+    difficulty: "beginner",
+    prompt: "Fix the comparison so it checks the text of the variable instead of treating it as a number.",
+    starter:
+`#!/bin/bash
+answer="yes"
+# TODO: -eq is for numbers, not strings — fix the comparison
+if [ "$answer" -eq "yes" ]; then
+  echo "confirmed"
+else
+  echo "not confirmed"
+fi`,
+    expectedOutput: "confirmed",
+    correction:
+`#!/bin/bash
+answer="yes"
+if [ "$answer" = "yes" ]; then
+  echo "confirmed"
+else
+  echo "not confirmed"
+fi`,
+    explanation: "`-eq` compares integers — bash tries to convert \\\"yes\\\" to a number and errors out. Use `=` (or `==` inside `[[ ]]`) to compare strings."
+  },
+  {
+    id: "linux-grep-case",
+    lang: "linux",
+    title: "Case-sensitive grep",
+    difficulty: "intermediate",
+    prompt: "Fix the search so it finds \"Error: disk full\" in log.txt even though the E is capitalized.",
+    starter:
+`#!/bin/bash
+# TODO: this search is case-sensitive and misses "Error" — fix it
+grep "error" log.txt`,
+    files: [{ name: "log.txt", content: "System started\nWarning: low memory\nError: disk full\nAll good" }],
+    expectedOutput: "Error: disk full",
+    correction:
+`#!/bin/bash
+grep -i "error" log.txt`,
+    explanation: "`grep` is case-sensitive by default, so searching for \\\"error\\\" skips right past \\\"Error: disk full\\\". The `-i` flag makes the match case-insensitive."
   }
 ];
 
@@ -425,6 +496,17 @@ const COURSES = [
       "Classes & modules",
       "Files & exceptions",
       "A small real project"
+    ]
+  },
+  {
+    lang: "linux",
+    title: "Linux & Shell Basics",
+    modules: [
+      "Navigating the filesystem",
+      "Permissions & ownership",
+      "Pipes, redirection & filters",
+      "Shell scripting basics",
+      "Processes & job control"
     ]
   }
 ];

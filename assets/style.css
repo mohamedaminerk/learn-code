@@ -135,8 +135,9 @@ h2.section-title{ font-size:clamp(1.5rem, 3vw, 1.9rem); font-weight:700; margin:
 .btn[disabled]{ opacity:0.55; cursor:not-allowed; transform:none; }
 
 /* ============ language cards (home) ============ */
-.lang-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; }
-@media (max-width:820px){ .lang-grid{ grid-template-columns:1fr; } }
+.lang-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:20px; }
+@media (max-width:980px){ .lang-grid{ grid-template-columns:repeat(2, 1fr); } }
+@media (max-width:560px){ .lang-grid{ grid-template-columns:1fr; } }
 .lang-card{
   background:var(--paper); color:var(--ink); border-radius:var(--radius-card);
   padding:26px 24px 22px; position:relative; border-top:4px solid var(--c-accent, var(--amber));
@@ -147,6 +148,7 @@ h2.section-title{ font-size:clamp(1.5rem, 3vw, 1.9rem); font-weight:700; margin:
 .lang-card[data-lang="c"]{ --c-accent:#7fa7c9; }
 .lang-card[data-lang="java"]{ --c-accent:var(--rose); }
 .lang-card[data-lang="python"]{ --c-accent:var(--green); }
+.lang-card[data-lang="linux"]{ --c-accent:#9b8cc9; }
 .lang-name{ font-size:1.3rem; font-weight:700; margin:0 0 6px; color:var(--ink); }
 .lang-desc{ font-size:0.92rem; color:var(--ink-soft); margin:0 0 18px; min-height:3.2em; }
 .lang-stats{ display:flex; gap:18px; font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-soft); margin-bottom:18px; }
@@ -196,8 +198,9 @@ h2.section-title{ font-size:clamp(1.5rem, 3vw, 1.9rem); font-weight:700; margin:
 .ex-arrow{ font-family:var(--font-mono); font-size:0.85rem; color:var(--ink-soft); }
 
 /* ============ courses ============ */
-.course-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-@media (max-width:820px){ .course-grid{ grid-template-columns:1fr; } }
+.course-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+@media (max-width:980px){ .course-grid{ grid-template-columns:repeat(2, 1fr); } }
+@media (max-width:560px){ .course-grid{ grid-template-columns:1fr; } }
 .course-card{ border:1px solid var(--grid-line-strong); border-radius:4px; padding:24px; }
 .course-lang{ font-family:var(--font-mono); font-size:0.78rem; color:var(--sky); }
 .course-title{ font-size:1.12rem; font-weight:700; margin:8px 0 18px; }

@@ -18,12 +18,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/clike/clike.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/shell/shell.min.js"></script>
 </head>
 <body class="blueprint">
 
 <header class="site">
   <div class="nav-inner">
-    <a href="index.html" class="logo">learn<span class="dot">.</span>code</a>
+    <a href="index.html" class="logo"><img src="assets/favicon.svg" alt="" class="logo-mark">learn<span class="dot">.</span>code</a>
     <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">menu</button>
     <nav class="links" id="navLinks">
       <a href="index.html" data-nav="home">Home</a>
@@ -132,7 +133,7 @@
       ex.files.map(f => `<code>${f.name}</code>`).join(", ");
   }
 
-  const filenames = { c: "main.c", java: "Main.java", python: "main.py" };
+  const filenames = { c: "main.c", java: "Main.java", python: "main.py", linux: "main.sh" };
   document.getElementById("editorFilename").textContent = filenames[ex.lang];
 
   // ---- editor ----

@@ -78,7 +78,7 @@
             <div class="output-body empty" id="outputBody">Run your code to see output here.</div>
             <div class="result-banner idle" id="resultBanner">Not checked yet — run your code to compare it against the expected output.</div>
           </div>
-          <p class="piston-note">Runs live in your browser via the public Piston code execution API. If it's briefly slow or unavailable, that's the shared service, not your code.</p>
+          <p class="piston-note">Runs live in your browser via the free Judge0 CE code execution API. If it's briefly slow or unavailable, that's the shared service, not your code.</p>
         </div>
       </div>
 
@@ -197,34 +197,4 @@
       }
     } catch (err) {
       setOutput(String(err.message || err), true);
-      setBanner("fail", "✗ Couldn't reach the code runner. Try again in a moment.");
-    } finally {
-      runStatus.textContent = "";
-      runBtn.disabled = false;
-    }
-  });
-
-  // ---- correction reveal ----
-  const revealBtn = document.getElementById("revealBtn");
-  const correctionPanel = document.getElementById("correctionPanel");
-  document.getElementById("correctionCode").textContent = ex.correction;
-  document.getElementById("correctionNote").textContent = ex.explanation;
-
-  revealBtn.addEventListener("click", () => {
-    const isHidden = correctionPanel.hasAttribute("hidden");
-    if (isHidden) {
-      correctionPanel.removeAttribute("hidden");
-      revealBtn.textContent = "Hide the correction";
-    } else {
-      correctionPanel.setAttribute("hidden", "");
-      revealBtn.textContent = "Show the correction";
-    }
-  });
-
-  document.getElementById("loadCorrectionBtn").addEventListener("click", () => {
-    editor.setValue(ex.correction);
-    window.scrollTo({ top: document.querySelector(".editor-card").getBoundingClientRect().top + window.scrollY - 90, behavior: "smooth" });
-  });
-</script>
-</body>
-</html>
+      setBanner("fail", "✗ Couldn't reach the

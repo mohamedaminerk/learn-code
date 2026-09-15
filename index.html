@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>learn.code — exercises, corrections & courses in C, Java & Python</title>
+<meta name="description" content="Learn C, Java and Python by writing code in the browser, running it, and comparing it against real corrections and short courses.">
+<link rel="canonical" href="https://mohamedaminerk.github.io/learn-code/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="learn.code — exercises, corrections & courses in C, Java & Python">
+<meta property="og:description" content="Write, run and check C, Java and Python exercises right in the browser, with real corrections and short courses.">
+<meta property="og:url" content="https://mohamedaminerk.github.io/learn-code/index.html">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/favicon.ico">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="blueprint">
+
+<header class="site">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">learn<span class="dot">.</span>code</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">menu</button>
+    <nav class="links" id="navLinks">
+      <a href="index.html" data-nav="home">Home</a>
+      <a href="language.html?lang=c" data-nav="languages">Languages</a>
+      <a href="courses.html" data-nav="courses">Courses</a>
+      <a href="work.html" data-nav="work">My work</a>
+      <a href="about.html" data-nav="about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <p class="page-tag">exercises · corrections · courses</p>
+      <h1 class="page-title">Learn to code by writing it, running it, and reading the correction.</h1>
+      <p class="page-sub">A collection of my programming work and hand-written exercises in C, Java and Python. Pick a language, solve the exercise right in the browser, and check it against a real correction — not just a pass or fail.</p>
+
+      <div class="hero-cta">
+        <a href="language.html?lang=c" class="btn btn-primary">Start with an exercise</a>
+        <a href="work.html" class="btn btn-ghost">See my work</a>
+      </div>
+
+      <div class="demo-card">
+        <div class="demo-bar"><span class="puck"></span><span class="puck"></span><span class="puck"></span>&nbsp;sum_array.c — correction</div>
+        <div class="demo-body">
+<pre><span class="line-note">int sum(int *arr, int n) {</span>
+<span class="line-bad">    for (int i = 0; i <= n; i++)</span>
+<span class="line-good">    for (int i = 0; i < n; i++)</span>
+<span class="line-note">        total += arr[i];</span>
+<span class="line-note">}</span>
+<span class="line-note">// off-by-one: <= n reads one element past the array</span></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Pick a language</h2>
+          <p class="section-desc">Each one opens its own page: a list of exercises, each with a real code editor.</p>
+        </div>
+        <span class="section-index">01 / languages</span>
+      </div>
+      <div class="lang-grid" id="langGrid"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="blueprint">
+  <div class="wrap">
+    <span class="logo">learn<span class="dot">.</span>code</span>
+    <span>Built to learn from mistakes, one exercise at a time.</span>
+  </div>
+</footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+  initNav("home");
+  renderLanguageCards(document.getElementById("langGrid"));
+</script>
+</body>
+</html>

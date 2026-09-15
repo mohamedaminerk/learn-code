@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise — learn.code</title>
+<meta name="description" content="Solve a C, Java or Python exercise right in the browser, run it, and check it against a real correction.">
+<meta property="og:type" content="website">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/favicon.ico">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/clike/clike.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+</head>
+<body class="blueprint">
+
+<header class="site">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">learn<span class="dot">.</span>code</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">menu</button>
+    <nav class="links" id="navLinks">
+      <a href="index.html" data-nav="home">Home</a>
+      <a href="language.html?lang=c" data-nav="languages">Languages</a>
+      <a href="courses.html" data-nav="courses">Courses</a>
+      <a href="work.html" data-nav="work">My work</a>
+      <a href="about.html" data-nav="about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-head" style="padding-bottom:0;">
+    <div class="wrap">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a><span class="sep">/</span>
+        <a href="language.html?lang=c" id="crumbLang">…</a><span class="sep">/</span>
+        <span class="current" id="crumbTitle">…</span>
+      </div>
+      <div class="ex-meta">
+        <span class="badge badge-lang" id="badgeLang"></span>
+        <span id="badgeDiff"></span>
+      </div>
+      <h1 class="page-title" id="exTitle" style="font-size:clamp(1.7rem,3.4vw,2.3rem);">Loading…</h1>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="ex-layout">
+        <div class="prompt-card">
+          <h3>Problem</h3>
+          <p id="exPrompt"></p>
+          <p id="exFilesNote" style="display:none;"></p>
+        </div>
+
+        <div>
+          <div class="editor-card">
+            <div class="editor-bar">
+              <span class="filename" id="editorFilename">main</span>
+              <div class="editor-actions">
+                <button class="btn btn-ghost btn-sm" id="resetBtn" type="button">Reset</button>
+                <button class="btn btn-primary btn-sm" id="runBtn" type="button">Run &amp; check</button>
+              </div>
+            </div>
+            <textarea id="codeArea"></textarea>
+          </div>
+
+          <div class="output-card">
+            <div class="output-bar"><span>Output</span><span id="runStatus"></span></div>
+            <div class="output-body empty" id="outputBody">Run your code to see output here.</div>
+            <div class="result-banner idle" id="resultBanner">Not checked yet — run your code to compare it against the expected output.</div>
+          </div>
+          <p class="piston-note">Runs live in your browser via the public Piston code execution API. If it's briefly slow or unavailable, that's the shared service, not your code.</p>
+        </div>
+      </div>
+
+      <div class="correction-toggle">
+        <button class="btn btn-ghost btn-sm" id="revealBtn" type="button">Show the correction</button>
+      </div>
+      <div class="correction-panel" id="correctionPanel" hidden>
+        <p class="correction-label">Correction</p>
+        <div class="code-block" id="correctionCode"></div>
+        <p class="ex-note" id="correctionNote"></p>
+        <button class="btn btn-ghost btn-sm" id="loadCorrectionBtn" type="button" style="margin-top:14px;">Load correction into editor</button>
+      </div>
+
+      <div class="ex-nextprev">
+        <a class="btn btn-ghost btn-sm" id="backToListBtn" href="language.html">← Back to exercise list</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="blueprint">
+  <div class="wrap">
+    <span class="logo">learn<span class="dot">.</span>code</span>
+    <span>Built to learn from mistakes, one exercise at a time.</span>
+  </div>
+</footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+  initNav("languages");
+
+  const params = new URLSearchParams(location.search);
+  const id = params.get("id");
+  const ex = EXERCISES.find(e => e.id === id) || EXERCISES[0];
+  const info = LANGUAGES[ex.lang];
+
+  document.title = ex.title + " — learn.code";
+  document.getElementById("crumbLang").textContent = info.name;
+  document.getElementById("crumbLang").href = "language.html?lang=" + ex.lang;
+  document.getElementById("crumbTitle").textContent = ex.title;
+  document.getElementById("badgeLang").textContent = info.name;
+  document.getElementById("badgeDiff").innerHTML = `<span class="badge badge-${ex.difficulty}">${ex.difficulty}</span>`;
+  document.getElementById("exTitle").textContent = ex.title;
+  document.getElementById("exPrompt").textContent = ex.prompt;
+  document.getElementById("backToListBtn").href = "language.html?lang=" + ex.lang;
+
+  if (ex.files && ex.files.length) {
+    const note = document.getElementById("exFilesNote");
+    note.style.display = "block";
+    note.innerHTML = "Extra file available to your program: " +
+      ex.files.map(f => `<code>${f.name}</code>`).join(", ");
+  }
+
+  const filenames = { c: "main.c", java: "Main.java", python: "main.py" };
+  document.getElementById("editorFilename").textContent = filenames[ex.lang];
+
+  // ---- editor ----
+  const textarea = document.getElementById("codeArea");
+  textarea.value = ex.starter;
+  const editor = CodeMirror.fromTextArea(textarea, {
+    mode: info.cmMode,
+    lineNumbers: true,
+    indentUnit: 4,
+    tabSize: 4,
+    viewportMargin: Infinity
+  });
+
+  document.getElementById("resetBtn").addEventListener("click", () => {
+    editor.setValue(ex.starter);
+  });
+
+  // ---- run & check ----
+  const outputBody = document.getElementById("outputBody");
+  const resultBanner = document.getElementById("resultBanner");
+  const runStatus = document.getElementById("runStatus");
+  const runBtn = document.getElementById("runBtn");
+
+  function setOutput(text, isErr) {
+    outputBody.textContent = text || "(no output)";
+    outputBody.classList.toggle("empty", !text);
+    outputBody.classList.toggle("err", !!isErr);
+  }
+
+  function setBanner(state, text) {
+    resultBanner.className = "result-banner " + state;
+    resultBanner.textContent = text;
+  }
+
+  runBtn.addEventListener("click", async () => {
+    runBtn.disabled = true;
+    runStatus.innerHTML = '<span class="spinner"></span>';
+    setOutput("Running…", false);
+    setBanner("idle", "Running your code…");
+
+    try {
+      const { stdout, stderr, ok } = await runCode(ex.lang, editor.getValue(), ex.files || []);
+      if (stderr) {
+        setOutput(stderr, true);
+      } else {
+        setOutput(stdout, false);
+      }
+
+      if (ex.expectedOutput != null) {
+        const got = (stdout || "").trim();
+        const expected = ex.expectedOutput.trim();
+        if (!stderr && got === expected) {
+          setBanner("pass", "✓ Output matches — nice work.");
+        } else if (stderr) {
+          setBanner("fail", "✗ Your code didn't run cleanly — see the error above.");
+        } else {
+          setBanner("fail", `✗ Not quite — expected "${expected}", got "${got || "(empty)"}".`);
+        }
+      } else {
+        setBanner("idle", "Ran successfully. Compare the output with the correction below.");
+      }
+    } catch (err) {
+      setOutput(String(err.message || err), true);
+      setBanner("fail", "✗ Couldn't reach the code runner. Try again in a moment.");
+    } finally {
+      runStatus.textContent = "";
+      runBtn.disabled = false;
+    }
+  });
+
+  // ---- correction reveal ----
+  const revealBtn = document.getElementById("revealBtn");
+  const correctionPanel = document.getElementById("correctionPanel");
+  document.getElementById("correctionCode").textContent = ex.correction;
+  document.getElementById("correctionNote").textContent = ex.explanation;
+
+  revealBtn.addEventListener("click", () => {
+    const isHidden = correctionPanel.hasAttribute("hidden");
+    if (isHidden) {
+      correctionPanel.removeAttribute("hidden");
+      revealBtn.textContent = "Hide the correction";
+    } else {
+      correctionPanel.setAttribute("hidden", "");
+      revealBtn.textContent = "Show the correction";
+    }
+  });
+
+  document.getElementById("loadCorrectionBtn").addEventListener("click", () => {
+    editor.setValue(ex.correction);
+    window.scrollTo({ top: document.querySelector(".editor-card").getBoundingClientRect().top + window.scrollY - 90, behavior: "smooth" });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — learn.code</title>
+<meta name="description" content="Why this site exists: learn to code by running exercises and reading real corrections.">
+<link rel="canonical" href="https://mohamedaminerk.github.io/learn-code/about.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About — learn.code">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/favicon.ico">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="blueprint">
+
+<header class="site">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">learn<span class="dot">.</span>code</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">menu</button>
+    <nav class="links" id="navLinks">
+      <a href="index.html" data-nav="home">Home</a>
+      <a href="language.html?lang=c" data-nav="languages">Languages</a>
+      <a href="courses.html" data-nav="courses">Courses</a>
+      <a href="work.html" data-nav="work">My work</a>
+      <a href="about.html" data-nav="about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span class="current">About</span></div>
+      <p class="page-tag">about this site</p>
+      <h1 class="page-title">Why this exists</h1>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="about">
+        <p>I put my own exercises and projects here, corrected the way I wish someone had corrected mine when I was learning — not just "this is wrong" but why, and what the fix actually changes. Every exercise runs right in the browser, so you can try your own fix before looking at mine.</p>
+        <p>Everything on this site is a template: the exercises, corrections, courses and projects in <code>assets/data.js</code> are placeholders. Swap them for your own and it becomes your teaching site.</p>
+
+        <div class="contact-card">
+          <h3>Get in touch</h3>
+          <div class="contact-row"><span>Email</span><span>you@example.com</span></div>
+          <div class="contact-row"><span>GitHub</span><span>github.com/yourname</span></div>
+          <div class="contact-row"><span>New exercise?</span><span>Suggest one →</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="blueprint">
+  <div class="wrap">
+    <span class="logo">learn<span class="dot">.</span>code</span>
+    <span>Built to learn from mistakes, one exercise at a time.</span>
+  </div>
+</footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+  initNav("about");
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My work — learn.code</title>
+<meta name="description" content="Programming projects in C, Java and Python.">
+<link rel="canonical" href="https://mohamedaminerk.github.io/learn-code/work.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="My work — learn.code">
+<meta property="og:description" content="Programming projects in C, Java and Python.">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/favicon.ico">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="blueprint">
+
+<header class="site">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">learn<span class="dot">.</span>code</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">menu</button>
+    <nav class="links" id="navLinks">
+      <a href="index.html" data-nav="home">Home</a>
+      <a href="language.html?lang=c" data-nav="languages">Languages</a>
+      <a href="courses.html" data-nav="courses">Courses</a>
+      <a href="work.html" data-nav="work">My work</a>
+      <a href="about.html" data-nav="about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span class="current">My work</span></div>
+      <p class="page-tag">projects</p>
+      <h1 class="page-title">My work</h1>
+      <p class="page-sub">Projects I've built, beyond the exercises — replace these with your own.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="work-grid" id="workGrid"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="blueprint">
+  <div class="wrap">
+    <span class="logo">learn<span class="dot">.</span>code</span>
+    <span>Built to learn from mistakes, one exercise at a time.</span>
+  </div>
+</footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+  initNav("work");
+  renderWork(document.getElementById("workGrid"));
+</script>
+</body>
+</html>

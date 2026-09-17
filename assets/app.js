@@ -47,7 +47,7 @@ function renderLanguageCards(container) {
 }
 
 /* ---------- language page ---------- */
-function renderLanguagePage() {
+async function renderLanguagePage() {
   const params = new URLSearchParams(location.search);
   const lang = params.get("lang") || "c";
   const info = LANGUAGES[lang] || LANGUAGES.c;
@@ -64,11 +64,14 @@ function renderLanguagePage() {
     return `<a class="filter-pill ${active}" href="language.html?lang=${key}">${l.name}</a>`;
   }).join("");
 
+  const completed = await getCompletedSet();
+
   const list = document.getElementById("exerciseList");
   const items = EXERCISES.filter(e => e.lang === lang);
   list.innerHTML = items.map(ex => `
     <a class="exercise-row" href="exercise.html?id=${ex.id}">
       <div class="ex-left">
+        ${completed.has(ex.id) ? '<span class="badge" style="background:rgba(93,169,122,0.18);color:#2f6b47;">&#10003; done</span>' : ""}
         <span class="ex-title">${ex.title}</span>
         <span class="badge badge-lang">${info.name}</span>
         ${difficultyBadge(ex.difficulty)}
@@ -220,3 +223,4 @@ async function runCode(lang, source, extraFiles = []) {
 
   return { stdout, stderr, ok };
 }
+

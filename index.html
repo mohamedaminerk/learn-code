@@ -32,6 +32,7 @@
       <a href="work.html" data-nav="work">My work</a>
       <a href="journey.html" data-nav="journey">My Journey</a>
       <a href="about.html" data-nav="about">About</a>
+      <a href="login.html" id="authLink" data-nav="login">Log in</a>
     </nav>
   </div>
 </header>
@@ -84,9 +85,12 @@
 </footer>
 
 <script src="assets/data.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="assets/app.js"></script>
+<script src="assets/supabase.js"></script>
 <script>
   initNav("home");
+  initAuthNav();
   renderLanguageCards(document.getElementById("langGrid"));
 </script>
 </body>

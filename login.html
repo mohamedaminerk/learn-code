@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log in — learn.code</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  .auth-card{ max-width:420px; margin:0 auto; background:var(--paper); color:var(--ink); border-radius:4px; padding:32px; }
+  .auth-card h1{ font-size:1.5rem; margin:0 0 6px; }
+  .auth-card p.sub{ color:var(--ink-soft); font-size:0.92rem; margin:0 0 24px; }
+  .auth-field{ margin-bottom:16px; }
+  .auth-field label{ display:block; font-size:0.85rem; font-weight:600; margin-bottom:6px; }
+  .auth-field input{
+    width:100%; padding:10px 12px; border-radius:3px; border:1px solid rgba(27,36,48,0.2);
+    font-family:var(--font-body); font-size:0.95rem; background:#fff; color:var(--ink);
+  }
+  .auth-actions{ display:flex; gap:10px; margin-top:20px; }
+  .auth-msg{ margin-top:16px; font-size:0.88rem; padding:10px 12px; border-radius:3px; }
+  .auth-msg.error{ background:rgba(201,112,95,0.15); color:#8f3d2c; }
+  .auth-msg.ok{ background:rgba(93,169,122,0.15); color:#2f6b47; }
+  .auth-toggle{ margin-top:18px; font-size:0.88rem; text-align:center; color:var(--ink-soft); }
+  .auth-toggle a{ color:var(--amber-dim); font-weight:600; cursor:pointer; }
+</style>
+</head>
+<body class="blueprint">
+
+<header class="site">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><img src="assets/favicon.svg" alt="" class="logo-mark">learn<span class="dot">.</span>code</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">menu</button>
+    <nav class="links" id="navLinks">
+      <a href="index.html" data-nav="home">Home</a>
+      <a href="language.html?lang=c" data-nav="languages">Languages</a>
+      <a href="courses.html" data-nav="courses">Courses</a>
+      <a href="work.html" data-nav="work">My work</a>
+      <a href="about.html" data-nav="about">About</a>
+      <a href="login.html" id="authLink" data-nav="login">Log in</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-head" style="padding-bottom:0;">
+    <div class="wrap">
+      <div class="auth-card">
+        <h1 id="formTitle">Log in</h1>
+        <p class="sub" id="formSub">Save your progress across exercises.</p>
+
+        <form id="authForm">
+          <div class="auth-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" required autocomplete="email">
+          </div>
+          <div class="auth-field">
+            <label for="password">Password</label>
+            <input type="password" id="password" required autocomplete="current-password" minlength="6">
+          </div>
+          <div class="auth-actions">
+            <button type="submit" class="btn btn-primary" id="submitBtn" style="flex:1;">Log in</button>
+          </div>
+        </form>
+
+        <div id="authMsg"></div>
+
+        <p class="auth-toggle" id="toggleText">
+          Don't have an account? <a id="toggleLink">Sign up</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="blueprint">
+  <div class="wrap">
+    <span class="logo">learn<span class="dot">.</span>code</span>
+    <span>Built to learn from mistakes, one exercise at a time.</span>
+  </div>
+</footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/supabase.js"></script>
+<script>
+  initNav("login");
+  initAuthNav();
+
+  let mode = "login"; // or "signup"
+  const form = document.getElementById("authForm");
+  const msg = document.getElementById("authMsg");
+  const submitBtn = document.getElementById("submitBtn");
+  const toggleText = document.getElementById("toggleText");
+  const formTitle = document.getElementById("formTitle");
+  const formSub = document.getElementById("formSub");
+
+  function renderToggle() {
+    toggleText.innerHTML = mode === "login"
+      ? 'Don\'t have an account? <a id="toggleLink">Sign up</a>'
+      : 'Already have an account? <a id="toggleLink">Log in</a>';
+    document.getElementById("toggleLink").addEventListener("click", () => {
+      mode = mode === "login" ? "signup" : "login";
+      if (mode === "signup") {
+        formTitle.textContent = "Create an account";
+        formSub.textContent = "Takes 10 seconds. No verification hoops.";
+        submitBtn.textContent = "Sign up";
+      } else {
+        formTitle.textContent = "Log in";
+        formSub.textContent = "Save your progress across exercises.";
+        submitBtn.textContent = "Log in";
+      }
+      msg.innerHTML = "";
+      renderToggle();
+    });
+  }
+  renderToggle();
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    submitBtn.disabled = true;
+    msg.innerHTML = "";
+    try {
+      if (mode === "signup") {
+        await signUp(email, password);
+        msg.innerHTML = '<div class="auth-msg ok">Account created — you can log in now.</div>';
+      } else {
+        await signIn(email, password);
+        location.href = "index.html";
+      }
+    } catch (err) {
+      msg.innerHTML = `<div class="auth-msg error">${(err.message || err).toString()}</div>`;
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
